@@ -1,0 +1,16 @@
+.singleRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  background-color: #54608a;
+  color: #f5c254;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  border: 1px solid black;
+}
+
+/* 
+#FDE273
+#F5C254
+#54608A
+#D8D8C3
+ */
