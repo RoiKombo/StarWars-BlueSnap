@@ -6,7 +6,7 @@
 
 2.npm start
 
----
+## (minimal node v10)
 
 the app is based on create-react-app boilerplate
 
