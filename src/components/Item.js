@@ -7,7 +7,7 @@ export default function Item(props) {
             <div>
                 {props.name}
             </div>
-            <div>
+            <div>           
                 {props.length}
             </div>
             <div>

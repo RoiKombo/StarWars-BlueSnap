@@ -3,7 +3,7 @@ import React from 'react'
 export default function button() {
 
     const prevPage = () => {
-        setDataPage(dataPage => dataPage = '?page=1' );
+         setDataPage(dataPage => dataPage = '?page=1' );
     }
 
     const nextPage = () => {
