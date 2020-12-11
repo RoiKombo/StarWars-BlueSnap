@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import ListStyle from '../styles/ListStyle.css';
+import '../styles/ListStyle.css';
 import Item from './Item';
 import Filters from './Filters';
 
 export default function DataList({ results }) {
   const [data, setData] = useState(results);
   const [sortKey, setSortKey] = useState('');
-  const [filterKey, setFilterKey] = useState('');
   const sortResults = (list, key) => {
     const newSoreredList = [...list];
     return newSoreredList.sort((a, b) => (a[key] < b[key] ? 1 : -1));
@@ -27,10 +26,6 @@ export default function DataList({ results }) {
         JSON.stringify(Object.values(item)).includes(e.target.value)
       )
     );
-  };
-
-  const onSelectFilter = (e) => {
-    setFilterKey(e.target.value);
   };
 
   useEffect(() => {

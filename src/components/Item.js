@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ItemStyle from '../styles/ItemStyle.css';
+import '../styles/ItemStyle.css';
 
 export default function Item(props) {
   const { name, length, cost, speed } = props;

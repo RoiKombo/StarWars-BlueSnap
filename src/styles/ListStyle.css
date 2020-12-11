@@ -2,9 +2,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-items: center;
-  background-color: #54608a;
+  background-color: #005ca9;
   color: #f5c254;
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
   padding: 1rem 1rem 1rem 1rem;
-  
 }

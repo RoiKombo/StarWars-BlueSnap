@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import './styles/loader.css';
 import DataList from './components/DataList';
 
 const swApi = 'http://swapi.dev/api/starships/';
@@ -30,16 +31,31 @@ export default function App() {
   }, [url]);
   return (
     <div className="App">
-      <DataList results={data.results} />
       <div>
+        <h1 className="title">IMPERIAL FLEET CATALOG</h1>
+      </div>
+      {data.results.length ? (
+        <DataList results={data.results} />
+      ) : (
+        <div className="loader">
+          <div className="lds-dual-ring" />
+        </div>
+      )}
+      <div className="nav-btns">
         <button
+          className="btn"
           type="button"
           onClick={() => prevPage()}
           disabled={!data.previous}
         >
           PREVIOUS
         </button>
-        <button type="button" onClick={() => nextPage()} disabled={!data.next}>
+        <button
+          className="btn"
+          type="button"
+          onClick={() => nextPage()}
+          disabled={!data.next}
+        >
           NEXT
         </button>
       </div>

@@ -1,0 +1,16 @@
+.filters {
+  background: #fde273;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+.sort-input,
+.filter-input {
+  height: 35px;
+  border: 3px solid black;
+  border-radius: 5px;
+  background: transparent;
+  color: black;
+  margin: 0 10px;
+  width: 100px;
+}
