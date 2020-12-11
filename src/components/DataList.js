@@ -1,62 +1,66 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import ListStyle from '../styles/ListStyle.css';
 import Item from './Item';
-import Filters from './Filters'
+import Filters from './Filters';
 
-export default function DataList({results}) { 
-    
-    // const [list, setList] = useState(results);  
-    const [sortKey, setSortKey] = useState('');  
-    // useEffect(()=>{
+export default function DataList({ results }) {
+  const [data, setData] = useState(results);
+  const [sortKey, setSortKey] = useState('');
+  const [filterKey, setFilterKey] = useState('');
+  const sortResults = (list, key) => {
+    const newSoreredList = [...list];
+    return newSoreredList.sort((a, b) => (a[key] < b[key] ? 1 : -1));
+  };
 
-    //     setList(list.sort((a, b) => (a[sortKey] > b[sortKey]) ? 1 : -1))
-    // },[list,sortKey])
-    if(!results){
-        return(
-            <div>no data</div>
-        )
-    }
-    const sortResults = (list, key)=> {
-        const newList = list.sort((a, b) => (a[key] > b[key]) ? 1 : -1)
-        return newList;
-    }
+  useEffect(() => {
+    setData(sortResults(results, sortKey));
+  }, [results, sortKey]);
 
-    const onSelectSort = (e) => {
-        setSortKey(e.target.value)
-    }
+  const onSelectSort = (e) => {
+    setSortKey(e.target.value);
+  };
 
-   
+  const filterFunc = (e) => {
+    setData(
+      results.filter((item) =>
+        JSON.stringify(Object.values(item)).includes(e.target.value)
+      )
+    );
+  };
 
-    return (
+  const onSelectFilter = (e) => {
+    setFilterKey(e.target.value);
+  };
+
+  useEffect(() => {
+    setData(results);
+  }, [results]);
+
+  return (
     <div className="DataList">
-        
-        <div className="listHeader">
-            <div>Model</div>
-            <div>Light Speed</div>
-            <div>Size</div>
-            <div>Galactic Credit std</div>
-        </div>
+      <Filters sortFunc={onSelectSort} filterFunc={filterFunc} />
+      <div className="listHeader">
+        <div>Name</div>
+        <div>Light Speed</div>
+        <div>Size</div>
+        <div>Galactic Credits</div>
+      </div>
 
-            {results.map((shipDetail, i) => {
-            return (
-                <Item 
-                name={shipDetail.name}  
-                cost={shipDetail.cost_in_credits} 
-                length={shipDetail.length} 
-                speed={shipDetail.max_atmosphering_speed} 
-                key={i}>  
-                </Item>)
-            })}
-        <div>
-        </div>
+      {data.map((shipDetail, i) => (
+        <Item
+          name={shipDetail.name}
+          cost={shipDetail.cost_in_credits}
+          length={shipDetail.length}
+          speed={shipDetail.max_atmosphering_speed}
+          key={i}
+        />
+      ))}
+      <div />
     </div>
-    )
-}   
+  );
+}
 
-
-
-
-
-
-
-   
+DataList.propTypes = {
+  results: PropTypes.array,
+};
