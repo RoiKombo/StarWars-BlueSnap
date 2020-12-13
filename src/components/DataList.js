@@ -45,9 +45,9 @@ export default function DataList({ results }) {
       {data.map((shipDetail, i) => (
         <Item
           name={shipDetail.name}
-          cost={shipDetail.cost_in_credits}
-          length={shipDetail.length}
           speed={shipDetail.max_atmosphering_speed}
+          length={shipDetail.length}
+          cost={shipDetail.cost_in_credits}
           key={i}
         />
       ))}

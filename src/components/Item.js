@@ -7,9 +7,9 @@ export default function Item(props) {
   return (
     <div className="singleRow">
       <div>{name}</div>
+      <div>{speed}</div>
       <div>{length}</div>
       <div>{cost}</div>
-      <div>{speed}</div>
     </div>
   );
 }
