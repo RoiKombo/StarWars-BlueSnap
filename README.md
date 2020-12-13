@@ -8,6 +8,8 @@
 
 ## (minimal node v10)
 
+---
+
 the app is based on create-react-app boilerplate
 
 -points to upgrade given more time:
